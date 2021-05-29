@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 
 require('./travel/vehicle.js')(app);
+require('./travel/bus.js')(app);
 
 app.use(express.static(path.resolve(__dirname, '../public/build')));
 
