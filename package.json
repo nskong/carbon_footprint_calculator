@@ -4,12 +4,14 @@
   "description": "simple carbon emissions calculator",
   "main": "",
   "scripts": {
-    "test": "npm test",
+    "test": "mocha --reporter spec",
     "start": "node server/server.js"
   },
   "author": "Nathaniel Kong",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "mocha": "^8.4.0"
   }
 }
