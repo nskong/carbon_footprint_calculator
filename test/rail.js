@@ -11,7 +11,7 @@ describe("Rail Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(3700);
+                expect(body).to.equal("3700.00");
                 done();
             });
         })
@@ -22,7 +22,7 @@ describe("Rail Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(0);
+                expect(body).to.equal("0.00");
                 done();
             });
         })
@@ -58,7 +58,7 @@ describe("Rail Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(99);
+                expect(body).to.equal("2475.00");
                 done();
             });
         })
@@ -69,7 +69,7 @@ describe("Rail Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(0);
+                expect(body).to.equal("0.00");
                 done();
             });
         })
