@@ -12,8 +12,8 @@ export default function Main() {
     history.push('/Travel')
   }
 
-  const navigateToFood = () => {
-    history.push('/Food')
+  const navigateToHousing = () => {
+    history.push('/Housing')
   }
 
   return (
@@ -22,10 +22,10 @@ export default function Main() {
       <div className="MainMenu">
         <Button size="large" type="primary" onClick={navigateToTravel}>
           Travel
-          </Button>
-        <Button size="large" type="primary" onClick={navigateToFood}>
-          Food
-              </Button>
+        </Button>
+        <Button size="large" type="primary" onClick={navigateToHousing}>
+          Housing
+        </Button>
       </div>
     </div>
   );

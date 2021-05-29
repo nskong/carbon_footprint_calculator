@@ -20,8 +20,8 @@ export default function Travel() {
         history.push('/Rail')
     }
 
-    const navigateToTaxi = () => {
-        history.push('/Taxi')
+    const navigateToVehicle = () => {
+        history.push('/Vehicle')
     }
 
     return (
@@ -31,8 +31,8 @@ export default function Travel() {
             <Button size="large" type="primary" onClick={navigateToBus}>Bus</Button>
             <Button size="large" type="primary" onClick={navigateToFlying}>Flying</Button>
             <Button size="large" type="primary" onClick={navigateToRail}>Rail</Button>
-            <Button size="large" type="primary" onClick={navigateToTaxi}>Taxi</Button>
-            <Button size="large" type="primary" onClick={navigateToTaxi}>Vehicle</Button>
+            <Button size="large" type="primary" onClick={navigateToVehicle}>Taxi</Button>
+            <Button size="large" type="primary" onClick={navigateToVehicle}>Vehicle</Button>
         </div>
     );
 }

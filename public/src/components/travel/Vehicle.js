@@ -1,4 +1,4 @@
-import { InputNumber, Button } from 'antd';
+import { Input, InputNumber, Button } from 'antd';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 
@@ -63,7 +63,7 @@ export default function Vehicle() {
     }
 
     return (
-        <div className="Rail">
+        <div className="Vehicle">
             <div className="Title-text">3. Calculate Your Carbon Emissions</div>
 
             {
@@ -72,11 +72,11 @@ export default function Vehicle() {
             }
 
             <div>
-                <InputNumber
+                <Input
                     size='large'
                     placeholder='enter fuel economy (mpg)'
                     onChange={getFuelEconomy}>
-                </InputNumber>
+                </Input>
                 <InputNumber
                     size='large'
                     placeholder='enter the expected lifetime miles'

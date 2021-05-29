@@ -1,11 +1,15 @@
 import './App.css';
 import Main from './components/Main';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import Travel from './components/Travel';
 import Bus from './components/travel/Bus';
 import Flying from './components/travel/Flying';
 import Rail from './components/travel/Rail';
 import Vehicle from './components/travel/Vehicle';
+
+import Housing from './components/Housing';
+import Electricity from './components/housing/electricity';
 
 /**
  * Main application which holds all pages. I used react-router-dom to navigate
@@ -22,10 +26,10 @@ function App() {
           <Route path='/Bus' component={Bus} />
           <Route path='/Flying' component={Flying} />
           <Route path='/Rail' component={Rail} />
-          <Route path='/Taxi' component={Vehicle} />
           <Route path='/Vehicle' component={Vehicle} />
 
-          {/* <Route path='/Food' component={Food} /> */}
+          <Route path='/Housing' component={Housing} />
+          <Route path='/Electricity' component={Electricity} />
         </main>
       </Router>
     </div>
