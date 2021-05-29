@@ -9,7 +9,9 @@ require('./travel/vehicle.js')(app);
 require('./travel/bus.js')(app);
 require('./travel/taxi.js')(app);
 require('./travel/rail.js')(app);
-require('./travel/flying.js')(app)
+require('./travel/flying.js')(app);
+
+require('./housing/electricity.js')(app);
 
 app.use(express.static(path.resolve(__dirname, '../public/build')));
 

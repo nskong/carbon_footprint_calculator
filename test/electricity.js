@@ -51,7 +51,7 @@ describe("Electricity Emissions", function() {
         it ("should expect bad request response for nulls in input", function(done) { 
             let kWh = null;
     
-            let route = url + "kWh=" + miles; 
+            let route = url + "kWh=" + kWh; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(400);
                 done();
