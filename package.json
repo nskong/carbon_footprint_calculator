@@ -1,0 +1,15 @@
+{
+  "name": "sinai",
+  "version": "1.0.0",
+  "description": "simple carbon emissions calculator",
+  "main": "",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server/server.js"
+  },
+  "author": "Nathaniel Kong",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
