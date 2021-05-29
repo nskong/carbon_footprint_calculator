@@ -5,6 +5,7 @@ module.exports = function(app) {
         let expectedLifetimeMiles = req.query.expectedLifetimeMiles;
 
         res.send(JSON.stringify("0"));
+        // TODO: possibility of accounting for light-duty truck
     })
 
     app.get('/vehicle/emissions', function(req, res) {

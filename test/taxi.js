@@ -12,7 +12,7 @@ describe("Taxi Emissions", function() {
             let route = url + "fuelEconomy=" + fuelEconomy + "&expectedLifetimeMiles=" + expectedLifetimeMiles;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(response.body.emissionsFactor).to.equal(473.2);
+                expect(body).to.equal(473.2);
                 done();
             });
         })
@@ -24,7 +24,7 @@ describe("Taxi Emissions", function() {
             let route = url + "fuelEconomy=" + fuelEconomy + "&expectedLifetimeMiles=" + expectedLifetimeMiles;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(response.body.emissionsFactor).to.equal(346.94);
+                expect(body).to.equal(346.94);
                 done();
             });
         })
@@ -63,7 +63,7 @@ describe("Taxi Emissions", function() {
             let route = url + "miles=" + miles + "&emissionsFactor=" + emissionsFactor;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(response.body.emissions).to.equal(4732000);
+                expect(body).to.equal(4732000);
                 done();
             });
         })
@@ -75,7 +75,7 @@ describe("Taxi Emissions", function() {
             let route = url + "miles=" + miles + "&emissionsFactor=" + emissionsFactor;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(response.body.emissions).to.equal(3312.4);
+                expect(body).to.equal(3312.4);
                 done();
             });
         })
