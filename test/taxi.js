@@ -5,14 +5,14 @@ describe("Taxi Emissions", function() {
     describe("Emissions Factor Calculations", function() { 
         let url = "http://localhost:3001/taxi/emissionsFactor?";
 
-        it ("should calculate the emissions factor for a vehicle", function(done) { 
+        it ("should calculate the emissions factor for a taxi", function(done) { 
             let fuelEconomy = 25;
             let expectedLifetimeMiles = 150000;
     
             let route = url + "fuelEconomy=" + fuelEconomy + "&expectedLifetimeMiles=" + expectedLifetimeMiles;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(473.2);
+                expect(body).to.equal("473.20");
                 done();
             });
         })
@@ -24,7 +24,7 @@ describe("Taxi Emissions", function() {
             let route = url + "fuelEconomy=" + fuelEconomy + "&expectedLifetimeMiles=" + expectedLifetimeMiles;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(346.94);
+                expect(body).to.equal("346.94");
                 done();
             });
         })
@@ -63,7 +63,7 @@ describe("Taxi Emissions", function() {
             let route = url + "miles=" + miles + "&emissionsFactor=" + emissionsFactor;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(4732000);
+                expect(body).to.equal("4732000.00");
                 done();
             });
         })
@@ -75,7 +75,7 @@ describe("Taxi Emissions", function() {
             let route = url + "miles=" + miles + "&emissionsFactor=" + emissionsFactor;
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(3312.4);
+                expect(body).to.equal("3312.40");
                 done();
             });
         })

@@ -1,5 +1,3 @@
-const { json } = require("express");
-
 module.exports = function(app) {
 
     // TODO: possibility of accounting for light-duty truck
