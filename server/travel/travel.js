@@ -1,7 +1,3 @@
-exports.vehicle = function() { 
-    
-}
-
 exports.bus = function() { 
 
 }
