@@ -11,7 +11,7 @@ describe("Bus Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(1325);
+                expect(body).to.equal("1325.00");
                 done();
             });
         })
@@ -22,7 +22,7 @@ describe("Bus Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(4293);
+                expect(body).to.equal("4293.00");
                 done();
             });
         })
@@ -33,7 +33,7 @@ describe("Bus Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(21465);
+                expect(body).to.equal("21465.00");
                 done();
             });
         })
@@ -44,7 +44,7 @@ describe("Bus Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(0);
+                expect(body).to.equal("0.00");
                 done();
             });
         })
