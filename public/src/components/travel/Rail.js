@@ -6,9 +6,17 @@ export default function Rail() {
     const history = useHistory();
     const [emissions, setEmissions] = useState(null);
     const [transitIsSelected, setTransitIsSelected] = useState(true);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
 
     const navigateToHome = () => {
         history.push('/')
+    }
+
+    const displayErrorMessage = () => {
+        setShowErrorMessage(true);
+        setTimeout( function() { 
+            setShowErrorMessage(false);
+        }, 10000);
     }
 
     const calculateEmissions = (value) => {
@@ -24,7 +32,11 @@ export default function Rail() {
         fetch("/rail/" + category + "/emissions?miles=" + miles, {
             method: 'GET'
           }).then((response) => {
-            return response.json();
+            if (response.status == 400) { 
+                displayErrorMessage();
+            } else {
+                return response.json();
+            }
           }).then((data) => {
               setEmissions(data);
           })
@@ -37,6 +49,11 @@ export default function Rail() {
     return (
         <div className="Rail">
             <div className="Title-text">3. Calculate Your Carbon Emissions</div>
+
+            {
+                showErrorMessage && 
+                <p className="Error-message">Please input a valid number</p>
+            }
 
             {
                 transitIsSelected &&

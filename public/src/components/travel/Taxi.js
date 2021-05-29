@@ -7,9 +7,17 @@ export default function Taxi() {
     const [fuelEconomy, setFuelEconomy] = useState("");
     const [emissions, setEmissions] = useState(null);
     const [emissionsFactor, setEmissionsFactor] = useState(null);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
 
     const navigateToHome = () => {
         history.push('/')
+    }
+
+    const displayErrorMessage = () => {
+        setShowErrorMessage(true);
+        setTimeout( function() { 
+            setShowErrorMessage(false);
+        }, 10000);
     }
 
     const getFuelEconomy = (value) => {
@@ -37,7 +45,11 @@ export default function Taxi() {
         fetch("/vehicle/emissions?miles=" + miles + "&emissionsFactor=" + emissionsFactor, {
             method: 'GET'
           }).then((response) => {
-            return response.json();
+            if (response.status == 400) { 
+                displayErrorMessage();
+            } else {
+                return response.json();
+            }
           }).then((data) => {
               setEmissions(data);
           })
@@ -46,6 +58,11 @@ export default function Taxi() {
     return (
         <div className="Rail">
             <div className="Title-text">3. Calculate Your Carbon Emissions</div>
+
+            {
+                showErrorMessage && 
+                <p className="Error-message">Please input a valid number</p>
+            }
 
             <div>
                 <Input

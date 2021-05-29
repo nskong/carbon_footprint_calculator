@@ -5,25 +5,42 @@ import { useHistory } from 'react-router';
 export default function Bus() {
     const history = useHistory();
     const [emissions, setEmissions] = useState(null);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
 
     const navigateToHome = () => {
         history.push('/')
+    }
+
+    const displayErrorMessage = () => {
+        setShowErrorMessage(true);
+        setTimeout( function() { 
+            setShowErrorMessage(false);
+        }, 10000);
     }
 
     const calculateEmissions = (value) => {
         let miles = value.target.value;
         fetch("/bus/emissions?miles=" + miles, {
             method: 'GET'
-          }).then((response) => {
-            return response.json();
-          }).then((data) => {
-              setEmissions(data);
-          })
+        }).then((response) => {
+            if (response.status == 400) { 
+                displayErrorMessage();
+            } else {
+                return response.json();
+            }
+        }).then((data) => {
+            setEmissions(data);
+        })
     }
 
     return (
         <div className="Bus">
             <div className="Title-text">3. Calculate Your Carbon Emissions</div>
+
+            {
+                showErrorMessage && 
+                <p className="Error-message">Please input a valid number</p>
+            }
 
             <Input
                 size='large'
