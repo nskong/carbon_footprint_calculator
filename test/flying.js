@@ -11,7 +11,7 @@ describe("Flying Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(5858.75);
+                expect(body).to.equal("5858.75");
                 done();
             });
         })
@@ -22,7 +22,7 @@ describe("Flying Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(70305);
+                expect(body).to.equal("70305.00");
                 done();
             });
         })
@@ -43,7 +43,7 @@ describe("Flying Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(0);
+                expect(body).to.equal("0.00");
                 done();
             });
         })
@@ -70,7 +70,7 @@ describe("Flying Emissions", function() {
     })
 
     
-    describe("Short Haul Calculations", function() { 
+    describe("Medium Haul Calculations", function() { 
         let url = "http://localhost:3001/flying/medium/emissions?";
 
         it ("should calculate the emissions for a medium haul flight", function(done) { 
@@ -79,12 +79,12 @@ describe("Flying Emissions", function() {
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(289940);
+                expect(body).to.equal("289940.00");
                 done();
             });
         })
 
-        it ("should expect bad request response for miles under 300", function(done) {
+        it ("should expect bad request response for miles less than or equal to 300", function(done) {
             let miles = 300;
     
             let route = url + "miles=" + miles; 
@@ -116,16 +116,16 @@ describe("Flying Emissions", function() {
     })
 
 
-    describe("Short Haul Calculations", function() { 
+    describe("Long Haul Calculations", function() { 
         let url = "http://localhost:3001/flying/long/emissions?";
 
         it ("should calculate the emissions for a long haul flight", function(done) { 
-            let miles = 3000;
+            let miles = 2500;
     
             let route = url + "miles=" + miles; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
-                expect(body).to.equal(449625);
+                expect(body).to.equal("449625.00");
                 done();
             });
         })
