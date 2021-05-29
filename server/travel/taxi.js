@@ -1,3 +1,7 @@
+/**
+ * @deprecated Since taxis are mostly the same as passenger vehicles, I used the 
+ * same calculations for both
+ */
 module.exports = function(app) {
     app.get('/taxi/emissionsFactor', function(req, res) {
         console.log('calculating taxi emissions factor')
