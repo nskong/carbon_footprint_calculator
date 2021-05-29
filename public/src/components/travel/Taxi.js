@@ -4,18 +4,37 @@ import { useHistory } from 'react-router';
 
 export default function Taxi() {
     const history = useHistory();
+    const [fuelEconomy, setFuelEconomy] = useState("");
     const [emissions, setEmissions] = useState(null);
-    const [transitIsSelected, setTransitIsSelected] = useState(true);
+    const [emissionsFactor, setEmissionsFactor] = useState(null);
 
     const navigateToHome = () => {
         history.push('/')
     }
 
-    const calculateEmissionsFactor = (value) => {
-        let miles = value.target.value;
-        let category = "";
+    const getFuelEconomy = (value) => {
+        setFuelEconomy(value.target.value);
+    }
 
-        fetch("/vehicle/" + category + "/emissions?miles=" + miles, {
+    const calculateEmissionsFactor = (value) => {
+        let expectedLifetimeMiles = value.target.value;
+
+        console.log(fuelEconomy);
+        console.log(expectedLifetimeMiles);
+
+        fetch("/vehicle/emissionsFactor?fuelEconomy=" + fuelEconomy + "&expectedLifetimeMiles=" + expectedLifetimeMiles, {
+            method: 'GET'
+          }).then((response) => {
+            return response.json();
+          }).then((data) => {
+              setEmissionsFactor(data);
+          })
+    }
+
+    const calculateEmissions = (value) => {
+        let miles = value.target.value;
+
+        fetch("/vehicle/emissions?miles=" + miles + "&emissionsFactor=" + emissionsFactor, {
             method: 'GET'
           }).then((response) => {
             return response.json();
@@ -24,35 +43,32 @@ export default function Taxi() {
           })
     }
 
-    const toggleRailType = () => {
-        setTransitIsSelected(!transitIsSelected);
-    }
-
     return (
         <div className="Rail">
             <div className="Title-text">3. Calculate Your Carbon Emissions</div>
 
-            {
-                transitIsSelected &&
-                <div>
-                    <Button size="large" type="primary">Transit Rail</Button>
-                    <Button size="large" type="default" onClick={toggleRailType}>Commuter Rail</Button>
-                </div>
-            }
+            <div>
+                <Input
+                    size='large'
+                    placeholder='enter fuel economy (mpg)'
+                    onChange={getFuelEconomy}>
+                </Input>
+                <Input
+                    size='large'
+                    placeholder='enter the expected lifetime miles'
+                    onPressEnter={calculateEmissionsFactor}
+                ></Input>
+            </div>
 
             {
-                !transitIsSelected &&
-                <div>
-                    <Button size="large" type="default" onClick={toggleRailType}>Transit Rail</Button>
-                    <Button size="large" type="primary">Commuter Rail</Button>
-                </div>
+                emissionsFactor &&
+                <Input
+                    size='large'
+                    placeholder='enter the miles traveled here'
+                    onPressEnter={calculateEmissions}>
+                </Input>
             }
 
-            <Input
-                size='large'
-                placeholder='enter the miles traveled here'
-                onPressEnter={calculateEmissions}>
-            </Input>
 
             {
                 (emissions) &&
