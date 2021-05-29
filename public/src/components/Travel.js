@@ -1,6 +1,10 @@
 import { Button } from 'antd';
 import { useHistory } from 'react-router';
 
+/**
+ * Travel category of emissions. Step 2 of the applications and allows a user to pick a
+ * emissions category within the travel subsection
+ */
 export default function Travel() {
     const history = useHistory();
 

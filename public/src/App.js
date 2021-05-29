@@ -7,6 +7,10 @@ import Flying from './components/travel/Flying';
 import Rail from './components/travel/Rail';
 import Vehicle from './components/travel/Vehicle';
 
+/**
+ * Main application which holds all pages. I used react-router-dom to navigate
+ * between pages, because I realized the ant components had navigation a little late.
+ */
 function App() {
   return (
     <div className="App">

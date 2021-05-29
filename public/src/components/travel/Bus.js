@@ -2,6 +2,10 @@ import { InputNumber, Button } from 'antd';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 
+/**
+ * Calculations page for bus, prompts user for mileage and shows their emissions based
+ * upon mileage given 
+ */
 export default function Bus() {
     const history = useHistory();
     const [emissions, setEmissions] = useState(null);
@@ -11,6 +15,7 @@ export default function Bus() {
         history.push('/')
     }
 
+    // Displays an error message. Times out the error message after 10 seconds
     const displayErrorMessage = () => {
         setShowErrorMessage(true);
         setTimeout( function() { 
@@ -18,6 +23,8 @@ export default function Bus() {
         }, 10000);
     }
 
+    // calculates the emissions given the mileage. Shows an error message if response
+    // code is 400
     const calculateEmissions = (value) => {
         let miles = value.target.value;
         fetch("/bus/emissions?miles=" + miles, {

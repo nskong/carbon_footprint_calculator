@@ -2,6 +2,9 @@ import { InputNumber, Button } from 'antd';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 
+/**
+ * Vehicle page
+ */
 export default function Vehicle() {
     const history = useHistory();
     const [fuelEconomy, setFuelEconomy] = useState("");
@@ -13,6 +16,7 @@ export default function Vehicle() {
         history.push('/')
     }
 
+    // Displays an error message. Times out the error message after 10 seconds
     const displayErrorMessage = () => {
         setShowErrorMessage(true);
         setTimeout( function() { 
@@ -20,15 +24,16 @@ export default function Vehicle() {
         }, 10000);
     }
 
+    // Helper function that sets state of component. Used separately because we need both
+    // fuel economy and lifetime miles input before on press can be used
     const getFuelEconomy = (value) => {
         setFuelEconomy(value.target.value);
     }
 
+    // Calculates the emissions factor on enter press to lifetime mileage input. 
+    // Displays error message on 400 response
     const calculateEmissionsFactor = (value) => {
         let expectedLifetimeMiles = value.target.value;
-
-        console.log(fuelEconomy);
-        console.log(expectedLifetimeMiles);
 
         fetch("/vehicle/emissionsFactor?fuelEconomy=" + fuelEconomy + "&expectedLifetimeMiles=" + expectedLifetimeMiles, {
             method: 'GET'
@@ -39,6 +44,8 @@ export default function Vehicle() {
           })
     }
 
+    // calculates the emissions on return to mileage input. Displays error message on 
+    // 400 response.
     const calculateEmissions = (value) => {
         let miles = value.target.value;
 

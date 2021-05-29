@@ -11,6 +11,7 @@ export default function Flying() {
         history.push('/')
     }
 
+    // Displays an error message. Times out the error message after 10 seconds
     const displayErrorMessage = () => {
         setShowErrorMessage(true);
         setTimeout( function() { 
@@ -18,6 +19,8 @@ export default function Flying() {
         }, 10000);
     }
 
+    // Calculates the emissions given the mileage. Shows an error message if response
+    // code is 400. Chooses different flying route based on how many miles the user inputs
     const calculateEmissions = (value) => {
         let miles = value.target.value;
         let category = "";
