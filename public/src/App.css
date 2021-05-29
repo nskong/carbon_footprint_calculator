@@ -22,8 +22,21 @@ button {
   margin: 5px;
 }
 
+.ant-input-number { 
+  width: 50%;
+}
+
 .Error-message {
   color: red;
+}
+
+#rail-input { 
+  margin-top: 10px;
+}
+
+.Results { 
+  font-size: x-large;
+  margin: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

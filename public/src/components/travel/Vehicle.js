@@ -1,8 +1,8 @@
-import { Input, Button } from 'antd';
+import { InputNumber, Button } from 'antd';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 
-export default function Taxi() {
+export default function Vehicle() {
     const history = useHistory();
     const [fuelEconomy, setFuelEconomy] = useState("");
     const [emissions, setEmissions] = useState(null);
@@ -65,32 +65,32 @@ export default function Taxi() {
             }
 
             <div>
-                <Input
+                <InputNumber
                     size='large'
                     placeholder='enter fuel economy (mpg)'
                     onChange={getFuelEconomy}>
-                </Input>
-                <Input
+                </InputNumber>
+                <InputNumber
                     size='large'
                     placeholder='enter the expected lifetime miles'
                     onPressEnter={calculateEmissionsFactor}
-                ></Input>
+                ></InputNumber>
             </div>
 
             {
                 emissionsFactor &&
-                <Input
+                <InputNumber
                     size='large'
                     placeholder='enter the miles traveled here'
                     onPressEnter={calculateEmissions}>
-                </Input>
+                </InputNumber>
             }
 
 
             {
                 (emissions) &&
                 <div>
-                    <p>Your emissions is {emissions} g/km CO2</p>
+                    <p className="Results">You emitted {emissions} kg CO2</p>
                     <Button size="large" type="primary" onClick={navigateToHome}>Restart</Button>
                 </div>
             }

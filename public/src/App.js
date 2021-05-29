@@ -5,7 +5,7 @@ import Travel from './components/Travel';
 import Bus from './components/travel/Bus';
 import Flying from './components/travel/Flying';
 import Rail from './components/travel/Rail';
-import Taxi from './components/travel/Taxi';
+import Vehicle from './components/travel/Vehicle';
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
           <Route path='/Bus' component={Bus} />
           <Route path='/Flying' component={Flying} />
           <Route path='/Rail' component={Rail} />
-          <Route path='/Taxi' component={Taxi} />
-          <Route path='/Vehicle' component={Taxi} />
+          <Route path='/Taxi' component={Vehicle} />
+          <Route path='/Vehicle' component={Vehicle} />
 
           {/* <Route path='/Food' component={Food} /> */}
         </main>
