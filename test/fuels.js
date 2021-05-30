@@ -3,12 +3,12 @@ const request = require("request");
 
 describe("Fuel Emissions", function() {
     describe("Natural Gas Calculations", function() { 
-        let url = "http://localhost:3001/fuel/naturalGas/emissions?";
+        let url = "http://localhost:3001/fuel/emissions?type=naturalGas&";
 
         it ("should calculate emissions for natural gas", function(done) { 
-            let therm = 105;
+            let unit = 105;
     
-            let route = url + "therm=" + therm; 
+            let route = url + "unit=" + unit; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
                 expect(body).to.equal("693.00");
@@ -16,10 +16,10 @@ describe("Fuel Emissions", function() {
             });
         })
 
-        it ("should calculate the 0 total emissions on 0 therm", function(done) { 
-            let therm = 0;
+        it ("should calculate the 0 total emissions on 0 unit", function(done) { 
+            let unit = 0;
     
-            let route = url + "therm=" + therm; 
+            let route = url + "unit=" + unit; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(200);
                 expect(body).to.equal("0.00");
@@ -28,9 +28,9 @@ describe("Fuel Emissions", function() {
         })
 
         it ("should expect bad request response for negative input", function(done) { 
-            let therm = -1;
+            let unit = -1;
     
-            let route = url + "therm=" + therm; 
+            let route = url + "unit=" + unit; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(400);
                 done();
@@ -38,11 +38,42 @@ describe("Fuel Emissions", function() {
         })
 
         it ("should expect bad request response for nulls in input", function(done) { 
-            let therm = null;
+            let unit = null;
     
-            let route = url + "therm=" + therm; 
+            let route = url + "unit=" + unit; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(400);
+                done();
+            });
+        })
+    })
+
+    describe("Heating Oil Calculations", function() { 
+        let url = "http://localhost:3001/fuel/emissions?type=oil&";
+
+        it ("should calculate emissions for heating oil", function(done) { 
+            let unit = 105;
+    
+            let route = url + "unit=" + unit; 
+            request(route, function(error, response, body) {
+                expect(response.statusCode).to.equal(200);
+                expect(body).to.equal("1218.00");
+                done();
+            });
+        })
+    })
+
+
+    describe("LPG Calculations", function() { 
+        let url = "http://localhost:3001/fuel/emissions?type=lpg&";
+
+        it ("should calculate emissions for lpg", function(done) { 
+            let unit = 105;
+    
+            let route = url + "unit=" + unit; 
+            request(route, function(error, response, body) {
+                expect(response.statusCode).to.equal(200);
+                expect(body).to.equal("714.00");
                 done();
             });
         })
