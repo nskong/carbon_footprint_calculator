@@ -5,6 +5,10 @@ React + Node/Express web application for calculating carbon footprint. Currently
 
 # Usage
 
+### Installation
+
+Use ```npm install``` to install necessary dependencies
+
 ### Testing
 
 I used Mocha to create the tests for the backend. To run the tests, start the server in a terminal window using:
