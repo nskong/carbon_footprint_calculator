@@ -12,6 +12,7 @@ require('./travel/rail.js')(app);
 require('./travel/flying.js')(app);
 
 require('./housing/electricity.js')(app);
+require('./housing/fuels.js')(app);
 
 app.use(express.static(path.resolve(__dirname, '../public/build')));
 

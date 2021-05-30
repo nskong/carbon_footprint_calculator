@@ -28,9 +28,9 @@ describe("Fuel Emissions", function() {
         })
 
         it ("should expect bad request response for negative input", function(done) { 
-            let miles = -1;
+            let therm = -1;
     
-            let route = url + "miles=" + miles; 
+            let route = url + "therm=" + therm; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(400);
                 done();
@@ -38,9 +38,9 @@ describe("Fuel Emissions", function() {
         })
 
         it ("should expect bad request response for nulls in input", function(done) { 
-            let miles = null;
+            let therm = null;
     
-            let route = url + "miles=" + miles; 
+            let route = url + "therm=" + therm; 
             request(route, function(error, response, body) {
                 expect(response.statusCode).to.equal(400);
                 done();
