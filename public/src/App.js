@@ -10,6 +10,7 @@ import Vehicle from './components/travel/Vehicle';
 
 import Housing from './components/Housing';
 import Electricity from './components/housing/electricity';
+import Fuel from './components/housing/fuel';
 
 /**
  * Main application which holds all pages. I used react-router-dom to navigate
@@ -30,6 +31,7 @@ function App() {
 
           <Route path='/Housing' component={Housing} />
           <Route path='/Electricity' component={Electricity} />
+          <Route path='/Fuel' component={Fuel} />
         </main>
       </Router>
     </div>
