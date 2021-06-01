@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "mocha --reporter spec",
-    "build": "cd public && npm run build && cd ..",
+    "build": "npm install && cd public && npm install && npm run build && cd ..",
     "start": "node server/server.js"
   },
   "author": "Nathaniel Kong",

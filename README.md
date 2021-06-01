@@ -5,9 +5,9 @@ React + Node/Express web application for calculating carbon footprint. Currently
 
 # Usage
 
-### Installation
+### Setup
 
-Use ```npm install``` to install necessary dependencies
+Run ```npm build``` to build the project and install necessary dependencies.
 
 ### Testing
 
@@ -20,15 +20,13 @@ Then run the following command in another terminal window:
 ```npm test```
 
 
-### Start the website
+### Starting the website
 
-To start the website, run: 
-
-```npm build```
-
-then, 
+To start the website after building, run:
 
 ```npm start```
+
+The website will be available on the browser at http://localhost:3001/
 
 
 # Known issues
